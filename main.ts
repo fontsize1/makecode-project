@@ -1,3 +1,6 @@
+namespace SpriteKind {
+    export const Button = SpriteKind.create()
+}
 tiles.setTilemap(tilemap`level2`)
 forever(function () {
     scene.centerCameraAt(scene.cameraProperty(CameraProperty.X) + 2, scene.cameraProperty(CameraProperty.Y) + 2)
