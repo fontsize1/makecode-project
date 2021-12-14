@@ -26,6 +26,9 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
         if (Button == 2) {
             Button = 1
         }
+        if (Button == 0) {
+            Button = 1
+        }
     }
 })
 let Button = 0
