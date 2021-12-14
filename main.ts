@@ -33,6 +33,7 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 let Button = 0
 let Location = 0
+game.splash("Presented by:", "-------------")
 Location = 0
 tiles.setTilemap(tilemap`level2`)
 let StartButton = sprites.create(assets.image`Start Button0`, SpriteKind.Button)
