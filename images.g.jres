@@ -14,6 +14,11 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "Start Button0"
     },
+    "image3": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAADAAAAAAAAAAMAAAAAAAAAAwAwAAAAAAAwADAAAAAAADAAMAAAAAAAAAMwADADAAAAAzAAAAMAAAAwMwAAAwAAADADAwAwAAAAAAAzMzMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "myImage"
+    },
     "*": {
         "mimeType": "image/x-mkcd-f4",
         "dataEncoding": "base64",
