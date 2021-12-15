@@ -1,39 +1,47 @@
+enum RadioMessage {
+    message1 = 49434
+}
 namespace SpriteKind {
     export const Button = SpriteKind.create()
+    export const title_scrren = SpriteKind.create()
 }
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     if (Location == 0) {
-        if (Button == 0) {
-            Button = 2
+        if (Button2 == 0) {
+            Button2 = 2
             music.baDing.play()
         }
-        if (Button == 1) {
-            Button = 2
+        if (Button2 == 1) {
+            Button2 = 2
             music.baDing.play()
         }
     }
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (Location == 0) {
-        if (Button == 2) {
+        if (Button2 == 2) {
             Location = 1
             music.powerUp.play()
+            tiles.setTilemap(tilemap`gaymer`)
         }
     }
 })
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     if (Location == 0) {
-        if (Button == 2) {
-            Button = 1
+        if (Button2 == 2) {
+            Button2 = 1
         }
-        if (Button == 0) {
-            Button = 1
+        if (Button2 == 0) {
+            Button2 = 1
         }
     }
 })
-let Button = 0
+let Button2 = 0
 let Location = 0
-game.splash("Presented by:", "-------------")
+scene.setBackgroundColor(15)
+let start_screen = sprites.create(assets.image`gayming`, SpriteKind.title_scrren)
+pause(1000)
+start_screen.destroy()
 Location = 0
 tiles.setTilemap(tilemap`level2`)
 let StartButton = sprites.create(assets.image`Start Button0`, SpriteKind.Button)
@@ -42,6 +50,23 @@ let Cursor = sprites.create(assets.image`Cursor`, SpriteKind.Player)
 StartButton.setStayInScreen(true)
 ExitButton.setStayInScreen(true)
 ExitButton.setPosition(80, 80)
+forever(function () {
+    if (Button2 == 2) {
+        Cursor.destroy()
+        Cursor = sprites.create(assets.image`Cursor`, SpriteKind.Player)
+        Cursor.setStayInScreen(true)
+        Cursor.setPosition(StartButton.x, StartButton.y + 8)
+    }
+    if (Button2 == 0) {
+        Cursor.destroy()
+    }
+    if (Button2 == 1) {
+        Cursor.destroy()
+        Cursor = sprites.create(assets.image`Cursor`, SpriteKind.Player)
+        Cursor.setStayInScreen(true)
+        Cursor.setPosition(ExitButton.x, ExitButton.y + 8)
+    }
+})
 forever(function () {
     if (Location == 0) {
         scene.centerCameraAt(scene.cameraProperty(CameraProperty.X) + 1, scene.cameraProperty(CameraProperty.Y) + 1)
@@ -58,22 +83,5 @@ forever(function () {
         ExitButton.destroy()
         StartButton.destroy()
         Cursor.destroy()
-    }
-})
-forever(function () {
-    if (Button == 2) {
-        Cursor.destroy()
-        Cursor = sprites.create(assets.image`Cursor`, SpriteKind.Player)
-        Cursor.setStayInScreen(true)
-        Cursor.setPosition(StartButton.x, StartButton.y + 8)
-    }
-    if (Button == 0) {
-        Cursor.destroy()
-    }
-    if (Button == 1) {
-        Cursor.destroy()
-        Cursor = sprites.create(assets.image`Cursor`, SpriteKind.Player)
-        Cursor.setStayInScreen(true)
-        Cursor.setPosition(ExitButton.x, ExitButton.y + 8)
     }
 })
