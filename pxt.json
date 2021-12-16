@@ -2,7 +2,8 @@
     "name": "MakeCode project",
     "description": "",
     "dependencies": {
-        "device": "*"
+        "device": "*",
+        "radio-broadcast": "*"
     },
     "files": [
         "main.blocks",
