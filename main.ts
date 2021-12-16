@@ -2,19 +2,21 @@ namespace SpriteKind {
     export const Button = SpriteKind.create()
     export const Ball = SpriteKind.create()
 }
-let Location = 0
-let BallPlaying = 0
-let balltime = 0
-let BallHealth = 0
-let Balltype = 0
-let Ball: Sprite = null
-let BallMoved = 0
-let Ball_LeftRight = 0
+controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (Location == 0) {
+        if (Button2 == 0) {
+            Button2 = 2
+            music.baDing.play()
+        }
+        if (Button2 == 1) {
+            Button2 = 2
+            music.baDing.play()
+        }
+    }
+})
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (Location == 0) {
-        let Button2 = 0
         if (Button2 == 2) {
-            let Cursor: Sprite = null
             Location = 1
             music.powerUp.play()
             tiles.setTilemap(tilemap`level4`)
@@ -131,6 +133,16 @@ function Ball0 () {
     }
     return
 }
+controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (Location == 0) {
+        if (Button2 == 2) {
+            Button2 = 1
+        }
+        if (Button2 == 0) {
+            Button2 = 1
+        }
+    }
+})
 function CreateBall () {
     BallMoved = 0
     if (Location == 1) {
@@ -166,3 +178,57 @@ function CreateBall () {
         }
     }
 }
+let Ball_LeftRight = 0
+let BallMoved = 0
+let Ball: Sprite = null
+let Balltype = 0
+let BallHealth = 0
+let balltime = 0
+let BallPlaying = 0
+let Button2 = 0
+let Cursor: Sprite = null
+let Location = 0
+game.splash("Presented by:", "-------------")
+Location = 0
+tiles.setTilemap(tilemap`level2`)
+let StartButton = sprites.create(assets.image`Start Button0`, SpriteKind.Button)
+let ExitButton = sprites.create(assets.image`Start Button`, SpriteKind.Button)
+Cursor = sprites.create(assets.image`Cursor`, SpriteKind.Player)
+StartButton.setStayInScreen(true)
+ExitButton.setStayInScreen(true)
+ExitButton.setPosition(80, 80)
+forever(function () {
+    if (Location == 0) {
+        scene.centerCameraAt(scene.cameraProperty(CameraProperty.X) + 1, scene.cameraProperty(CameraProperty.Y) + 1)
+        StartButton.x += 1
+        StartButton.y += 1
+        ExitButton.x += 1
+        ExitButton.y += 1
+        if (140 < scene.cameraProperty(CameraProperty.X)) {
+            scene.centerCameraAt(0, 0)
+            StartButton.setPosition(80, 60)
+            ExitButton.setPosition(80, 80)
+        }
+    } else {
+        ExitButton.destroy()
+        StartButton.destroy()
+        Cursor.destroy()
+    }
+})
+forever(function () {
+    if (Button2 == 2) {
+        Cursor.destroy()
+        Cursor = sprites.create(assets.image`Cursor`, SpriteKind.Player)
+        Cursor.setStayInScreen(true)
+        Cursor.setPosition(StartButton.x, StartButton.y + 8)
+    }
+    if (Button2 == 0) {
+        Cursor.destroy()
+    }
+    if (Button2 == 1) {
+        Cursor.destroy()
+        Cursor = sprites.create(assets.image`Cursor`, SpriteKind.Player)
+        Cursor.setStayInScreen(true)
+        Cursor.setPosition(ExitButton.x, ExitButton.y + 8)
+    }
+})
