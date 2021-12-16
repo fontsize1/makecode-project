@@ -1,4 +1,4 @@
- 
+sus
 
 
 > Open this page at [https://fontsize1.github.io/makecode-project/](https://fontsize1.github.io/makecode-project/)
