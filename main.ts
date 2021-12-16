@@ -94,4 +94,7 @@ game.onUpdateInterval(100, function () {
         music.powerDown.play()
         pause(2000)
     }
+    for (let index = 0; index < 4; index++) {
+        pause(100)
+    }
 })
