@@ -99,30 +99,7 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
         }
     }
 })
-function Ball0 () {
-    for (let index = 0; index < balltime; index++) {
-        if (BallMoved != 1) {
-            pause(2.5)
-            if (Ball_LeftRight == 0) {
-                Ball.x += 0.025
-                Ball.y += -0.2
-            } else {
-                Ball.x += -0.025
-                Ball.y += -0.2
-            }
-        } else {
-            Ball.destroy(effects.spray, 30)
-            music.smallCrash.play()
-            scene.cameraShake(4, 40)
-            balltime = balltime - 5
-            pause(250)
-            CreateBall()
-            break;
-        }
-        if (balltime < 300) {
-            break;
-        }
-    }
+c
     if (BallMoved == 0) {
         if (balltime < 300) {
             game.splash("you win!")
