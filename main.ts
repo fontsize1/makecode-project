@@ -1,5 +1,6 @@
 enum RadioMessage {
-    message1 = 49434
+    message1 = 49434,
+    l = 6987
 }
 namespace SpriteKind {
     export const Button = SpriteKind.create()
@@ -23,6 +24,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             Location = 1
             music.powerUp.play()
             tiles.setTilemap(tilemap`gaymer`)
+            startfinish = 1
         }
     }
 })
@@ -38,6 +40,8 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 let Button2 = 0
 let Location = 0
+let startfinish = 0
+startfinish = 0
 scene.setBackgroundColor(15)
 let start_screen = sprites.create(assets.image`gayming`, SpriteKind.title_scrren)
 pause(1000)
@@ -83,5 +87,11 @@ forever(function () {
         ExitButton.destroy()
         StartButton.destroy()
         Cursor.destroy()
+    }
+})
+game.onUpdateInterval(100, function () {
+    if (startfinish == 1) {
+        music.powerDown.play()
+        pause(2000)
     }
 })
